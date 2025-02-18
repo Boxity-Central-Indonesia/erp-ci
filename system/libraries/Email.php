@@ -74,7 +74,8 @@ class CI_Email {
 	public $smtp_host = 'boxity.id';
 	public $smtp_user = 'info@boxity.id';
 	public $smtp_pass = '5YD}~e&Q2Leq';
-	public $smtp_port = 465;
+	public $smtp_port = 587;
+
 
 	/**
 	 * SMTP connection timeout in seconds
@@ -95,7 +96,8 @@ class CI_Email {
 	 *
 	 * @var	string	empty, 'tls' or 'ssl'
 	 */
-	public $smtp_crypto = 'ssl';
+	public $smtp_crypto = 'tls';
+	
 	public $wordwrap = TRUE;
 	public $wrapchars = 76;
 
