@@ -16,12 +16,16 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
         
-      - uses: shivammathur/setup-php@v2
+      - name: ⚙️ Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
 
-      - name: Deploy CI Project
+      - name: 📦 Install Dependencies
+        run: |
+          composer install --no-dev --prefer-dist --optimize-autoloader
+
+      - name: 🚀 Deploy CI Project
         if: github.ref == 'refs/heads/main'
         run: |
-          # Deploy application files
           sshpass -p 'LibrA21101998' rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ boxity@153.92.5.213:/home/boxity/demo-erp-v01.boxity.id
