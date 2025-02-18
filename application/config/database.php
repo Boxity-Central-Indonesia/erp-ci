@@ -7,9 +7,9 @@ $query_builder = TRUE;
 $db['db2'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'u481419426_user_erp_setti',
+	'username' => 'set_erpciuser',
 	'password' => 'j@cAU9n@U9Wk7mS',
-	'database' => 'u481419426_erp_setting_db',
+	'database' => 'boxity_set_erpci',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -31,7 +31,7 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
   	exit();
 }
-$data = mysqli_query($con, "SELECT * FROM u481419426_erp_setting_db.list_db WHERE isaktif = 1");
+$data = mysqli_query($con, "SELECT * FROM boxity_set_erpci.list_db WHERE isaktif = 1");
 $dflt = mysqli_fetch_assoc($data);
 
 $db['default'] = array(
