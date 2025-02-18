@@ -4,15 +4,20 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
 
-    - name: Deploy files via SCP
-      run: |
-        rsync -avz --delete ./ boxity@153.92.5.213:/demo-erp-v01.boxity.id
+      - name: Deploy CI Project
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Deploy application files
+          sshpass -p 'LibrA21101998' rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ boxity@153.92.5.213:/home/boxity/demo-erp-v01.boxity.id
